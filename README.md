@@ -1,7 +1,7 @@
 # Logging in JSON Format
 
-There are some use cases where it would desirable to have application messages formated in the form of JSON documents. Most popular logging 
-packages don't support this, but they are easily extended to handle different layouts.  This project has examples on how to do this for three
+There are some use cases where it would desirable to have application messages formated as JSON documents. Most popular logging 
+packages don't support this, but they are easily extended to handle different layouts.  This repo has examples on how to do this for three
 commonly used logging framewoks: Log4J, Log4Net and Logback.
 
 In all these examples, a Layout class is extended to format logging data as a JSON document.  The Layout is then used with a rolling file appender. 
@@ -24,19 +24,18 @@ Or this for log4net:
 ```
 <appender name="Json" type="log4net.Appender.RollingFileAppender">
   <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
-	<staticLogFileName value="false" />
-	<file value="Logs\\example-" />
-	<appendToFile value="true" />
-	<rollingStyle value="Date" />
-	<datePattern value="yyyy-MM-dd'.json'" />
-	<layout type="Remgant.Log4Net.JsonLayout">
+  <staticLogFileName value="false" />
+  <file value="Logs\\example-" />
+  <appendToFile value="true" />
+  <rollingStyle value="Date" />
+  <datePattern value="yyyy-MM-dd'.json'" />
+  <layout type="Remgant.Log4Net.JsonLayout">
     <ApplicationID>1234</ApplicationID>
     <EnvironmentName>DEV</EnvironmentName>
   </layout>
 </appender>
 ```
-If you're using this for logstash, which is a likely use case for this, you could instead add mappings as process the file rather than adding properties to the Layout class. For instance,
-this logstash.conf file would accomplish the same thing:
+If you're using this for logstash, which is a likely use case for this, you could instead add filters to add fields to the document rather than adding properties to the Layout class. For instance, this logstash.conf file would accomplish the same thing:
 ```
 input {
     file {
