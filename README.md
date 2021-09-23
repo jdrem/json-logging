@@ -8,7 +8,7 @@ In all these examples, a Layout class is extended to format logging data as a JS
 The three examples here are:
 * [Log4j](https://github.com/jdremillard/json-logging/tree/main/json-logging-log4j)
 * [Log4Net](https://github.com/jdremillard/json-logging/tree/main/json-logging-log4net)
-* [Logback](https://github.com/jdremillard/json-logging/tree/main/json-logging-logback
+* [Logback](https://github.com/jdremillard/json-logging/tree/main/json-logging-logback)
 
 It may be that you'd like to add application or site specific data to the log messages.  Like a application ID or enviroment name. It's easy enough
 to add a new property to the JsonLayout class and add it the configuration file. Like this for log4j:
@@ -35,8 +35,8 @@ Or this for log4net:
   </layout>
 </appender>
 ```
-If you're using this for logstash, you could instead add mappings as process the file rather than adding properties to the Layout class. For instance,
-this would accomplish the same thing:
+If you're using this for logstash, which is a likely use case for this, you could instead add mappings as process the file rather than adding properties to the Layout class. For instance,
+this logstash.conf file would accomplish the same thing:
 ```
 input {
     file {
