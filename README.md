@@ -10,6 +10,9 @@ The three examples here are:
 * [Log4Net](https://github.com/jdremillard/json-logging/tree/main/json-logging-log4net)
 * [Logback](https://github.com/jdremillard/json-logging/tree/main/json-logging-logback)
 
+Beginning with version 2.14.0 of Log4J (referred to as Log4j2 since it's significantly different from pre 2.0 versions) there is a JSON layout 
+available.  An example of configuring it is [here](https://github.com/jdremillard/json-logging/tree/main/json-logging-log4j2).
+
 It may be that you'd like to add application or site specific data to the log messages.  Like a application ID or enviroment name. It's easy enough
 to add a new property to the JsonLayout class and add it the configuration file. Like this for log4j:
 ```
