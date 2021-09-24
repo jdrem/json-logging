@@ -11,8 +11,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class JsonLayout extends LayoutBase<ILoggingEvent> {
-    final private Gson gson = new Gson();
 
+    final private Gson gson;
     final private String hostName;
 
     public JsonLayout() {
@@ -23,6 +23,7 @@ public class JsonLayout extends LayoutBase<ILoggingEvent> {
             hn = "localhost";
         }
         hostName = hn;
+        gson = new Gson();
     }
 
 
