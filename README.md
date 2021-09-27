@@ -2,7 +2,10 @@
 
 There are some use cases where it would desirable to have application messages formated as JSON documents. Most popular logging 
 packages don't support this, but they are easily extended to handle different layouts.  This repo has examples on how to do this for three
-commonly used logging framewoks: Log4J, Log4Net and Logback.
+commonly used logging framewoks: Log4J, Log4Net and Logback. Insructions are provided for adding an existing JSON layout to Log4J2. 
+And lastyly, how to add application specific data is shown.
+
+## Extending Layouts
 
 In all these examples, a Layout class is extended to format logging data as a JSON document.  The Layout is then used with a rolling file appender. 
 The three examples here are:
@@ -10,8 +13,12 @@ The three examples here are:
 * [Log4Net](https://github.com/jdremillard/json-logging/tree/main/json-logging-log4net)
 * [Logback](https://github.com/jdremillard/json-logging/tree/main/json-logging-logback)
 
+## Using Existing Layouts
+
 Beginning with version 2.14.0 of Log4J (referred to as Log4j2 since it's significantly different from pre 2.0 versions) there is a JSON layout 
 available.  An example of configuring it is [here](https://github.com/jdremillard/json-logging/tree/main/json-logging-log4j2).
+
+## Adding Appication Specific Data
 
 It may be that you'd like to add application or site specific data to the log messages.  Like a application ID or enviroment name. It's easy enough
 to add a new property to the JsonLayout class and add it the configuration file. Like this for log4j:
@@ -50,8 +57,8 @@ input {
 filter {
   mutate {
    add_field => {
-      "application_id" => "1234"
-      "environment" => "DEV"
+      "applicationId" => "1234"
+      "environmentName" => "DEV"
     }
  }
  output {
