@@ -38,10 +38,10 @@ public class JsonLayout extends LayoutBase<ILoggingEvent> {
         builder.put("message", iLoggingEvent.getFormattedMessage());
         builder.put("host", hostName);
         StackTraceElement[] stackTraceElements = iLoggingEvent.getCallerData();
-        builder.put("className", stackTraceElements[stackTraceElements.length - 1].getClassName());
-        builder.put("methodName", stackTraceElements[stackTraceElements.length - 1].getMethodName());
-        builder.put("fileName", stackTraceElements[stackTraceElements.length - 1].getFileName());
-        builder.put("lineNumber", stackTraceElements[stackTraceElements.length - 1].getLineNumber());
+        builder.put("className", stackTraceElements[0].getClassName());
+        builder.put("methodName", stackTraceElements[0].getMethodName());
+        builder.put("fileName", stackTraceElements[0].getFileName());
+        builder.put("lineNumber", stackTraceElements[0].getLineNumber());
         if (iLoggingEvent.getThrowableProxy() != null) {
             IThrowableProxy throwable = iLoggingEvent.getThrowableProxy();
             StringBuilder sb = new StringBuilder();
