@@ -25,8 +25,8 @@ namespace Remgant.Log4Net
             string errorMsg = loggingEvent.RenderedMessage + (!string.IsNullOrEmpty(loggingEvent.GetExceptionString()) ? ": " + loggingEvent.GetExceptionString() : "");
             var msg = new LogTemplate
             {
-                // Ticks are in milliseconds, need seconds
-                log_time_stamp = (loggingEvent.TimeStampUtc.Ticks - UnixEpochStart.Ticks) / 1000L,
+                // Ticks are 10,000th of seconds, need seconds
+                log_time_stamp = (loggingEvent.TimeStampUtc.Ticks - UnixEpochStart.Ticks) / TimeSpan.TicksPerSecond,
                 function_name = loggingEvent.LocationInformation.MethodName,
                 function_path = loggingEvent.LocationInformation.FileName,
                 line_number = loggingEvent.LocationInformation.LineNumber,
